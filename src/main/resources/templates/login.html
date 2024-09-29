@@ -15,15 +15,23 @@
 		<font style="color : red">
 			<p th:text="${emsg}"></p>
 		</font>
-		<form action="" method="post">
+		<form th:action="@{/login}" th:object="${student}" method="post">
 			<table class="table">
 				<tr>
 					<td>Email</td>
-					<td><input type="text" name="email"> </td>
+					<td><input type="text" th:field="*{email}">
+						<font style="color: red;">
+							<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password"> </td>
+					<td><input type="password" th:field="*{password}">
+						<font style="color: red;">
+							<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td></td>

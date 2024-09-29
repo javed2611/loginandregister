@@ -18,23 +18,39 @@
 		<font style="color : red">
 			<p th:text="${emsg}"></p>
 		</font>
-		<form action="save" method="post">
+		<form th:action="@{/save}" th:object="${student}" method="post">
 			<table class="table">
 				<tr>
 					<td>Name</td>
-					<td><input type="text" name="stuName"> </td>
+					<td><input type="text" th:field="*{name}">
+						<font style="color : red">
+							<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="text" name="email"> </td>
+					<td><input type="text" th:field="*{email}">
+						<font style="color : red">
+							<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password"> </td>
+					<td><input type="password" th:field="*{password}">
+						<font style="color : red">
+							<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td>Contact</td>
-					<td><input type="number" name="pho"> </td>
+					<td><input type="number" th:field="*{pho}">
+						<font style="color : red">
+							<p th:if="${#fields.hasErrors('pho')}" th:errors="*{pho}"></p>
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -43,7 +59,7 @@
 			</table>
 
 		</form>
-		<a href="login" class = "btn btn-secondary">Click here for Login</a>
+		<a href="login" class="btn btn-secondary">Click here for Login</a>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
